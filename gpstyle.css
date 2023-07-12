@@ -1,0 +1,195 @@
+body {
+
+    font-family: Arial, sans-serif;
+    background-color: #ffc09f;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+  
+  
+  }
+  
+  /* .Nog iets voor class = "nogiets"
+     ietsanders voor <ietsanders> hallo </ietsander> */
+  
+  .btn {
+    display: inline-block;
+    background-color: #ffee93;
+    border: none;
+    cursor: help;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: 30%;
+  }
+  
+  
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* Adjust the number of columns as needed */
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  
+  .card {
+    background-color: #F9D1D1;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .h2 {
+    margin-top: 0;
+  }
+
+  
+  
+  /* Style the footer */
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    opacity: 0.5;
+    padding: 0px;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Styling the Form (Color, Padding, Shadow) */
+  form {
+    background-color: #A0CED9;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  /* Styling form-control Class */
+  form-control {
+    text-align: left;
+    margin-bottom: 25px;
+  }
+  
+  .h1 {
+    text-align: center  ;
+    font-weight: bold;
+    font-size: 40px;
+  }
+  .Textcolum{
+   text-align: left;
+   font-weight: bold;
+   font-size: 22px;
+  }
+  
+  /* Styling form-control Label */
+  form-control label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling form-control input,
+    select, textarea */
+  form-control input,
+  form-control select,
+  form-control textarea {
+    border: 1px solid orange;
+    border-radius: 20px;
+    font-family: inherit;
+    padding: 10px;
+    display: block;
+    width: 95%;
+  }
+  
+  /* Styling form-control Radio
+    button and Checkbox */
+  form-control input[type="radio"],
+  form-control input[type="checkbox"] {
+    display: inline-block;
+    width: auto;
+  }
+  
+  /* Styling Button */
+  button {
+    border: 2px solid black;
+    border-radius: 2px;
+    font-family: inherit;
+    background-color: #F9D1D1;
+  
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+  
+  
+  
+  .content {
+    padding: 50px;
+    display: none;
+    overflow: hidden;
+    background-color: palegreen;
+    color: black;
+    margin-left: 20px;
+  }
+  
+  .column {
+    float: left;
+    width: 30%;
+    padding: 20px;
+  }
+  .column1 {
+    float: left;
+    width: 20%;
+    padding: 20px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .collapsible {
+    background-color: #F9D1D1;
+    color: white;
+    cursor: pointer;
+    padding: 30px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  header {
+  
+    background-color: #a0ced9;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  .active,
+  .collapsible:hover {
+      background-color: #a0ced9;
+  }
+
+  .content {
+      padding: 0 18px;
+      display: none;
+      overflow: hidden;
+      background-color: pink;
+  }

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="gpstyle.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+
+
+</head>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+
+<header>
+  <h1>Data information</h1>
+</header>
+
+<body>
+  <div class="container">
+    <!-- Dashboard Cards -->
+    <div class="card">
+      <h2>Average stress</h2>
+      <canvas id="chart1"></canvas>
+      <p style="color: black;" id="chart1Average"></p>
+      <ul id="stressresult"></ul>
+      <script>
+        axios.get('https://wegel.student.utwente.nl/alex/api/stress/').then(
+          response => {
+            let stressdata = response.data
+            let list = document.getElementById("stressresult");
+            for (let i = 0, len = stressdata.length; i < len; i++) {
+              var li = document.createElement("li");
+              li.innerText = stressdata[i].datum + ": " + stressdata[i].tijd + " : " + stressdata[i].stresslevel + " : " + stressdata[i].reden;
+              list.appendChild(li);
+            }
+          })
+      </script>
+    </div>
+    <div class="card">
+      <h2>Sleep time</h2>
+      <ul id="sleeplist"></ul>
+      <script>
+        axios.get('https://wegel.student.utwente.nl/alex/api/sleep/').then(
+          response => {
+            let sleepTime = response.data
+            let list = document.getElementById("sleeplist");
+            for (let i = 0, len = sleepTime.length; i < len; i++) {
+              var li = document.createElement("li");
+              li.innerText = sleepTime[i].day + ": " + sleepTime[i].sleep + "  hours of sleep";
+              list.appendChild(li);
+            }
+          }
+        )
+      </script>
+      <form id="form"> <!-- doet het niet meer op de een of andere maniere-->
+        <div> How many hours did you sleep?
+        </div>
+
+        <div id="form-control">
+          <label for="sleep-time" id="label-sleep-time"></label>
+
+          <!-- Dropdown options -->
+          <p id="sleep_message">
+          </p>
+
+          <textarea class="text-black" name="comment" id="comment" placeholder="Enter your comment here"></textarea>
+        </div>
+        <button type="submit" value="submit">Submit</button>
+      </form>
+
+      <script>
+        var form = document.getElementById('form');
+        var sleep;
+        var day;
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          form.style.display = 'none'; // Hide the initial form
+          var sleep_message = document.getElementById("comment").value;
+          const currentSleepTime = document.getElementById('sleep_message').value;
+
+          function getCurrentDay() {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            // var yyyy = today.getFullYear();
+
+            today = mm + '/' + dd;
+            console.log(today);
+            return today;
+          }
+          axios.post('https://wegel.student.utwente.nl/alex/api/sleep/', {
+            sleep: sleep_message,
+            day: getCurrentDay(),
+
+          }).then(response => console.log(response))
+        })
+         // Start the countdown
+      var timer = setInterval(function () {
+        countdownValue = -1;
+
+        if (countdownValue <= 0) {
+          clearInterval(timer);
+          countdownValue = 10; // Reset the countdown value
+          form.style.display = 'block'; // Show the form again'
+        }
+        
+      }, 1000); // Update every second (1000 milliseconds)
+
+      </script>
+    </div>
+    <div class="card">
+      <h2>Minutes of movement</h2>
+      <!-- Chart 2 -->
+      <canvas id="chart2"></canvas>
+      <p id="chart2Average"></p>
+    </div>
+
+
+    <script>
+
+    </script>
+
+    <footer>
+      <div class="row">
+        <div class="column">
+          <a href="/student/alex/gpdatainformation.html">
+            <img src="graph_grow.jpg" alt="Snow" style="width:20%"> </a>
+        </div>
+        <div class="column">
+          <a href="/student/alex/gpadvice.html">
+            <img src="logo_info.jpg" alt="Forest" style="width:20%"></a>
+        </div>
+        <div class="column">
+          <a href="/student/alex/gppersonal.html">
+            <img src="contactinfo.jpg" alt="Forest" style="width:20%"></a>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js">
+
+    </script>
+
+    <script src="gpGlobal.js"></script>
+    <script src="gpScript.js"></script>
+
+</body>
+
+</html>
